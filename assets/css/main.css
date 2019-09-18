@@ -1,0 +1,127 @@
+body {
+  margin:0px;
+  padding: 0px;
+}
+.headerContainer {
+  width: 100%;
+  box-shadow: 1px 1px 15px #d0d0d0;
+}
+
+.header {
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.logoContainer{
+  display: flex;
+}
+
+.applicationContainer {
+  width: 100%;
+  margin: auto;
+  max-width: 1500px;
+  margin-top:50px;
+}
+
+.directory {
+  width: 100%;
+}
+
+.directory h1 {
+  margin: 0px 0px 20px;
+}
+
+.directoryContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.directoryFilters {
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 1px 1px 15px #d0d0d0;
+  margin: 0px 20px;
+  max-height: 200px;
+  margin-top:60px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.directoryListings {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0px 20px;
+}
+
+.directoryItem {
+  box-shadow: 1px 1px 15px #eae8e8;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.directoryItem .description h3 {
+  margin: 0px 0px 10px;
+  font-size: 24px;
+}
+
+.directoryItem .description .subtext {
+  display: flex;
+  justify-content: space-between;
+  color: #5b5b5b;
+}
+
+.directoryItem img {
+  width: 160px;
+  height:160px;
+}
+
+.directoryItem .description {
+  width: 75%;
+  padding-right: 20px;
+}
+
+.directoryItem .description button{
+  background: #54ff54;
+  border: none;
+  padding: 20px 70px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px #d2cdcd;
+  height:60px;
+}
+
+.roles {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.role img {
+  width: 60px;
+  height:60px;
+}
+
+h1,h2 {
+  text-align: center;
+}

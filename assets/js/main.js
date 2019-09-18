@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-//require('../css/header.css');
-
+require('../css/main.css');
+import Header from './components/header.js'
+import Application from './components/application.js'
 export default class Main extends React.Component {
   constructor(props){
     super(props);
@@ -10,14 +11,16 @@ export default class Main extends React.Component {
   }
 
   componentDidMount(){
-    console.log("g")
   }
 
 
 
   render(){
     return (
-      <h1> III </h1>
+      <React.Fragment>
+        <Header/>
+        <Application view={"default"}/>
+      </React.Fragment>
     );
   }
 }
