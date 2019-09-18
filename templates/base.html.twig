@@ -6,7 +6,14 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+      <div id="react-root">
+      </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+
+        {% block latejavascripts %}
+
+        {% endblock %}
     </body>
 </html>
