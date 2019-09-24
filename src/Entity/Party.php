@@ -2,14 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\GroupRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PartyRepository")
  */
-class Group
+class Party
 {
     /**
      * @ORM\Id()
@@ -31,7 +29,7 @@ class Group
     /**
      * @ORM\Column(type="integer")
      */
-    private $charlevel;
+    private $minlevel;
 
     /**
      * @ORM\Column(type="integer")
@@ -39,19 +37,9 @@ class Group
     private $createdat;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Character", inversedBy="groups")
-     */
-    private $characters;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $active;
-
-    public function __construct()
-    {
-        $this->characters = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -82,14 +70,14 @@ class Group
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getMinlevel(): ?int
     {
-        return $this->charlevel;
+        return $this->minlevel;
     }
 
-    public function setLevel(int $charlevel): self
+    public function setMinlevel(int $minlevel): self
     {
-        $this->charlevel = $charlevel;
+        $this->minlevel = $minlevel;
 
         return $this;
     }
@@ -102,32 +90,6 @@ class Group
     public function setCreatedat(int $createdat): self
     {
         $this->createdat = $createdat;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Character[]
-     */
-    public function getCharacters(): Collection
-    {
-        return $this->characters;
-    }
-
-    public function addCharacter(Character $character): self
-    {
-        if (!$this->characters->contains($character)) {
-            $this->characters[] = $character;
-        }
-
-        return $this;
-    }
-
-    public function removeCharacter(Character $character): self
-    {
-        if ($this->characters->contains($character)) {
-            $this->characters->removeElement($character);
-        }
 
         return $this;
     }
