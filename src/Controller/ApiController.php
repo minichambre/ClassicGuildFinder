@@ -49,15 +49,15 @@ class ApiController extends AbstractController
      ]);
    }
 
-
-   /* @Route("/api/group/create", name="createGroup")
+   /**
+   * @Route("/api/group/create", name="api/group/create")
    */
   public function createGroup()
   {
     $errors = [];
     if (!isset($_POST['instance'])) {$errors[] = "instance";}
     if (!isset($_POST['server'])) {$errors[] = "server";}
-    if (!isset($_POST['level'])) {$errors[] = "level";}
+    if (!isset($_POST['minlevel'])) {$errors[] = "minlevel";}
     if (!isset($_POST['dps'])) {$errors[] = "dps";}
     if (!isset($_POST['tank'])) {$errors[] = "tank";}
     if (!isset($_POST['healer'])) {$errors[] = "healer";}
@@ -66,11 +66,11 @@ class ApiController extends AbstractController
       return new JsonResponse(["status" => false, "errors" => $errors]);
     }
 
-    $group = new Group();
-    $group->setInstance("test");
-    $group->setLevel(10);
-    $group->setServer("bloodfang");
-    $group->setCreatedat(20);
+    $group = new Party();
+    $group->setInstance($_POST['instance']);
+    $group->setMinlevel($_POST['minlevel']);
+    $group->setServer($_POST['server']);
+    $group->setCreatedat(1563815369);
     $group->setActive(true);
 
     $entityManager = $this->getDoctrine()->getManager();

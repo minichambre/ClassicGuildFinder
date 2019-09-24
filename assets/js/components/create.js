@@ -6,7 +6,7 @@ export default class Create extends React.Component {
     super(props);
     this.state = {
       instance: "",
-      level: 0,
+      minlevel: 0,
       server: "",
       dps: 0,
       healer:0,
@@ -24,7 +24,7 @@ export default class Create extends React.Component {
     event.preventDefault();
     let data = {
       instance: this.state.instance,
-      level: this.state.level,
+      minlevel: this.state.minlevel,
       server: this.state.server,
       healer: this.state.healer,
       dps: this.state.dps,
@@ -100,7 +100,7 @@ export default class Create extends React.Component {
 
               <div className="createInput">
               <label>Level req:</label>
-              <input onChange={this.handleInputChange} type="text" placeholder="level" value={this.state.level} name="level"/>
+              <input onChange={this.handleInputChange} type="text" placeholder="level" value={this.state.minlevel} name="minlevel"/>
               </div>
 
               <div className="createInput">
