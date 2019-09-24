@@ -25,6 +25,7 @@ body {
   margin: auto;
   max-width: 1500px;
   margin-top:50px;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .directory {
@@ -124,4 +125,21 @@ body {
 
 h1,h2 {
   text-align: center;
+}
+
+
+.createBackground {
+  width: 100%;
+  height: 100vh;
+  background: #000000a8;
+  position: absolute;
+}
+
+.create {
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding:20px;
 }

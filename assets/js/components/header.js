@@ -24,7 +24,7 @@ export default class Header extends React.Component {
           Search
           </div>
 
-          <div className="dropdown">
+          <div className="dropdown" onClick={this.props.showCreateFunction}>
           Create
           </div>
 
