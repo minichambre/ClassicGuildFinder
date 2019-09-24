@@ -22,7 +22,7 @@ export default class DirectoryItem extends Component {
           <h3> {this.props.listing.name} </h3>
           <div className="subtext">
             <span className="instance"> {this.props.listing.instance} </span>
-            <span className="level"> Required Level: {this.props.listing.level} </span>
+            <span className="minlevel"> Required Level: {this.props.listing.minlevel} </span>
             <span className="server"> Server: {this.props.listing.server} </span>
           </div>
           <div className="roles">

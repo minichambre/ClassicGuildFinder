@@ -9,7 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello! ✅</h1>
+    {% for food in data %}
+    <h1>{{food}}</h1>
+    {% endfor %}
 
     This friendly message is coming from:
     <ul>
