@@ -25,7 +25,7 @@ export default class Header extends React.Component {
           </div>
 
           <div className="dropdown">
-          Bean boi
+          Create
           </div>
 
           <div className="dropdown">
