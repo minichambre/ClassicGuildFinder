@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,39 +18,20 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="json")
      */
-    private $created_at;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $verified;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $last_login;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Character", mappedBy="owner", orphanRemoval=true)
-     */
-    private $characters;
-
-    public function __construct()
-    {
-        $this->characters = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -70,33 +50,41 @@ class User
         return $this;
     }
 
-    public function getCreatedAt(): ?int
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->created_at;
+        return (string) $this->email;
     }
 
-    public function setCreatedAt(int $created_at): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->created_at = $created_at;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getVerified(): ?bool
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->verified;
-    }
-
-    public function setVerified(bool $verified): self
-    {
-        $this->verified = $verified;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -106,46 +94,20 @@ class User
         return $this;
     }
 
-    public function getLastLogin(): ?int
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->last_login;
-    }
-
-    public function setLastLogin(int $last_login): self
-    {
-        $this->last_login = $last_login;
-
-        return $this;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
     /**
-     * @return Collection|Character[]
+     * @see UserInterface
      */
-    public function getCharacters(): Collection
+    public function eraseCredentials()
     {
-        return $this->characters;
-    }
-
-    public function addCharacter(Character $character): self
-    {
-        if (!$this->characters->contains($character)) {
-            $this->characters[] = $character;
-            $character->setOwner($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCharacter(Character $character): self
-    {
-        if ($this->characters->contains($character)) {
-            $this->characters->removeElement($character);
-            // set the owning side to null (unless already changed)
-            if ($character->getOwner() === $this) {
-                $character->setOwner(null);
-            }
-        }
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
