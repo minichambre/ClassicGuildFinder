@@ -9,6 +9,14 @@
         {% endblock %}
     </head>
     <body>
+      <div id="react-root">
+      </div>
         {% block body %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+
+        {% block latejavascripts %}
+        {{ encore_entry_script_tags('main') }}
+        {% endblock %}
     </body>
 </html>

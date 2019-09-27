@@ -34,16 +34,6 @@ class Character
      */
     private $owner;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Group", mappedBy="characters")
-     */
-    private $groups;
-
-    public function __construct()
-    {
-        $this->groups = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -81,34 +71,6 @@ class Character
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Group[]
-     */
-    public function getGroups(): Collection
-    {
-        return $this->groups;
-    }
-
-    public function addGroup(Group $group): self
-    {
-        if (!$this->groups->contains($group)) {
-            $this->groups[] = $group;
-            $group->addCharacter($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroup(Group $group): self
-    {
-        if ($this->groups->contains($group)) {
-            $this->groups->removeElement($group);
-            $group->removeCharacter($this);
-        }
 
         return $this;
     }
